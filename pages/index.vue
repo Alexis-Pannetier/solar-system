@@ -1,26 +1,32 @@
 <template>
-  <div class="container">
-    <div>
-      <h2 class="title">solar-system</h2>
+  <div class="index">
+    <a-row type="flex" justify="center" align="middle">
+      <h2 class="white">Système solaire</h2>
+    </a-row>
 
-      <a-checkbox v-model="isPlanet"> Planète </a-checkbox>
-      <a-checkbox v-model="withMoon"> Avec lune(s) </a-checkbox>
+    <a-row type="flex" justify="center" align="middle" style="margin: 32px 0">
+      <a-switch
+        v-model="isPlanet"
+        checked-children="Planètes"
+        un-checked-children="Planètes"
+      />
 
-      <a-row id="planet-container">
-        <a-col :span="6" v-for="item in visibleData" :key="item.id">
-          <span>
-            {{ item.name }}
-          </span>
-        </a-col>
-      </a-row>
-    </div>
+      <a-switch
+        v-model="withMoon"
+        checked-children="Avec lune(s)"
+        un-checked-children="Avec lune(s)"
+      />
+    </a-row>
+
+    <CardsContainer :data="visibleData" style="margin: 32px 0" />
   </div>
 </template>
 
 <script>
-import { solarSystemRequest } from '../store/Request'
+import { getAllStar } from '../store/Request'
+import { CardsContainer } from '../components/CardsContainer'
+
 export default {
-  methods: {},
   name: 'index',
   data() {
     return {
@@ -45,38 +51,21 @@ export default {
     },
   },
   mounted() {
-    this.data = solarSystemRequest().then((response) => (this.data = response))
+    this.data = getAllStar().then(
+      (response) => (this.data = response.sort(this.byAlphabetic))
+    )
   },
   methods: {
-    filteredData(data) {
-      return data.filter((item) => item.isPlanet === true)
+    byAlphabetic(a, b) {
+      const textA = a.name.toUpperCase()
+      const textB = b.name.toUpperCase()
+      return textA < textB ? -1 : textA > textB ? 1 : 0
     },
-    onPlanetChange() {},
-    onMoonChange() {},
   },
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: top;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
 .subtitle {
   font-weight: 300;
   font-size: 42px;

@@ -1,30 +1,23 @@
 <template>
-  <div class="container">
-    <div>
-      <h2 class="title">Favoris</h2>
-      <a-row id="planet-container">
-        <a-col :span="6" v-for="item in data" :key="item.id">
-          <span>
-            {{ item.name }}
-          </span>
-        </a-col>
-      </a-row>
-    </div>
+  <div class="favoris">
+    <a-row type="flex" justify="center" align="middle">
+      <h2 class="title white">Favoris</h2>
+    </a-row>
   </div>
 </template>
 
 <script>
-import { solarSystemRequest } from '../store/Request'
+import { getAllStar } from '../store/Request'
 export default {
   methods: {},
-  name: 'index',
+  name: 'favoris',
   data() {
     return {
       data: [],
     }
   },
   mounted() {
-    this.data = solarSystemRequest().then((response) => (this.data = response))
+    this.data = getAllStar().then((response) => (this.data = response))
   },
 }
 </script>

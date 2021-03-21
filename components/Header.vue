@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-menu v-model="current" mode="horizontal" theme="dark">
+    <a-menu v-model="current" mode="horizontal">
       <a-menu-item key="index">
         <a-row justify="center" align="middle">
           <logo

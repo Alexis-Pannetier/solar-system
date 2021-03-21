@@ -30,4 +30,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  // Test it on local network
+  server: {
+    host: "0.0.0.0"
+},
 }

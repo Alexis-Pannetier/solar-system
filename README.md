@@ -1,19 +1,28 @@
-# solar-system
+# Solar-system
 
-## Build Setup
+Show all star inside solar system
+
+## 💾 Build Setup
 
 ```bash
 # install dependencies
 $ yarn install
+```
+
+## 📊 Usage
 
 # serve with hot reload at localhost:3000
+
+```bash
 $ yarn dev
 
 # build for production and launch server
+
 $ yarn build
 $ yarn start
 
 # generate static project
+
 $ yarn generate
 ```
 
