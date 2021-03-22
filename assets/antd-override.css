@@ -1,3 +1,4 @@
+/* MENU */
 .ant-menu {
   background-color: inherit;
 }
@@ -6,6 +7,7 @@
   color: white !important;
 }
 
-.white {
-  color: white !important;
+/* TABLE */
+.ant-table-tbody {
+  background-color: white;
 }

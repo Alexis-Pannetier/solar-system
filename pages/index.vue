@@ -4,27 +4,50 @@
       <h2 class="white">Système solaire</h2>
     </a-row>
 
-    <a-row type="flex" justify="center" align="middle" style="margin: 32px 0">
-      <a-switch
-        v-model="isPlanet"
-        checked-children="Planètes"
-        un-checked-children="Planètes"
-      />
+    <a-row
+      type="flex"
+      justify="end"
+      align="middle"
+      :gutter="[16, 16]"
+      style="margin: 32px 0"
+    >
+      <a-col :md="12" :sm="24" :xs="24">
+        <a-switch
+          v-model="isPlanet"
+          checked-children="Planètes"
+          un-checked-children="Planètes"
+        />
 
-      <a-switch
-        v-model="withMoon"
-        checked-children="Avec lune(s)"
-        un-checked-children="Avec lune(s)"
-      />
+        <a-switch
+          v-model="withMoon"
+          checked-children="Avec lune(s)"
+          un-checked-children="Avec lune(s)"
+        />
+      </a-col>
+
+      <a-col :md="6" :sm="24" :xs="24">
+        <a-switch
+          v-model="isTable"
+          checked-children="Tableau"
+          un-checked-children="Cartes"
+        />
+      </a-col>
     </a-row>
 
-    <CardsContainer :data="visibleData" style="margin: 32px 0" />
+    <TableContainer v-if="isTable" :data="visibleData" style="margin: 32px 0" />
+
+    <CardsContainer
+      v-if="!isTable"
+      :data="visibleData"
+      style="margin: 32px 0"
+    />
   </div>
 </template>
 
 <script>
 import { getAllStar } from '../store/Request'
 import { CardsContainer } from '../components/CardsContainer'
+import { TableContainer } from '../components/TableContainer'
 
 export default {
   name: 'index',
@@ -32,6 +55,7 @@ export default {
     return {
       data: [],
       isPlanet: false,
+      isTable: true,
       withMoon: false,
     }
   },
@@ -51,9 +75,9 @@ export default {
     },
   },
   mounted() {
-    this.data = getAllStar().then(
-      (response) => (this.data = response.sort(this.byAlphabetic))
-    )
+    getAllStar().then((response) => {
+      this.data = response.sort(this.byAlphabetic)
+    })
   },
   methods: {
     byAlphabetic(a, b) {

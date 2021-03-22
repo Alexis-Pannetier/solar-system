@@ -30,6 +30,12 @@
         <a-descriptions-item label="Gravité">
           {{ star.gravity }}
         </a-descriptions-item>
+        <a-descriptions-item label="Découvert par">
+          {{ star.discoveredBy }}
+        </a-descriptions-item>
+        <a-descriptions-item label="Découvert le">
+          {{ star.discoveryDate }}
+        </a-descriptions-item>
       </a-descriptions>
     </a-row>
   </div>

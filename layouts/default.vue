@@ -55,4 +55,12 @@ h6 {
   box-sizing: border-box;
   margin: 0;
 }
+
+.white {
+  color: white !important;
+}
+
+.cursor {
+  cursor: pointer;
+}
 </style>
