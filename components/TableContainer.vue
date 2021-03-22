@@ -11,6 +11,9 @@
         <a-icon type="global" style="font-size: 16px" />
       </span>
     </template>
+    <template slot="favoris" slot-scope="text, record">
+      <FavorisButton :isChecked="false" :id="record.id" />
+    </template>
   </a-table>
 </template>
 
@@ -27,7 +30,15 @@ const columns = [
     key: 'isPlanet',
     scopedSlots: { customRender: 'isPlanet' },
   },
+  {
+    title: 'Favoris',
+    dataIndex: 'id',
+    key: 'id',
+    scopedSlots: { customRender: 'favoris' },
+  },
 ]
+
+import { FavorisButton } from './FavorisButton'
 
 export default {
   name: 'TableContainer',
@@ -35,6 +46,7 @@ export default {
   data() {
     return {
       columns,
+      favoris: [],
     }
   },
   methods: {
@@ -42,11 +54,20 @@ export default {
       return {
         on: {
           click: () => {
-            console.log('record:', record)
-            window.location.href = '/star/' + record.id
+            this.$router.push('/star/' + record.id)
           },
         },
       }
+    },
+  },
+  mounted() {
+    if (localStorage.favoris) {
+      this.favoris = localStorage.favoris
+    }
+  },
+  watch: {
+    name(newFavoris) {
+      localStorage.favoris = newFavoris
     },
   },
 }

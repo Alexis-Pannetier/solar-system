@@ -45,9 +45,9 @@
 </template>
 
 <script>
-import { getAllStar } from '../store/Request'
-import { CardsContainer } from '../components/CardsContainer'
-import { TableContainer } from '../components/TableContainer'
+import { getAllStar } from '../../store/Request'
+import { CardsContainer } from '../../components/CardsContainer'
+import { TableContainer } from '../../components/TableContainer'
 
 export default {
   name: 'index',

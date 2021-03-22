@@ -1,20 +1,11 @@
 <template>
   <div>
     <a-menu v-model="current" mode="horizontal">
-      <a-menu-item key="index">
-        <a-row justify="center" align="middle">
-          <logo
-            v-bind:style="{
-              verticalAlign: 'middle',
-              height: '32px',
-              width: '32px',
-            }"
-          />
-          <NuxtLink to="/">Système solaire</NuxtLink>
-        </a-row>
+      <a-menu-item key="star">
+        <NuxtLink to="/star">Système solaire</NuxtLink>
       </a-menu-item>
       <a-menu-item key="favoris">
-        <NuxtLink to="favoris">Favoris</NuxtLink>
+        <NuxtLink to="/favoris">Favoris</NuxtLink>
       </a-menu-item>
     </a-menu>
   </div>

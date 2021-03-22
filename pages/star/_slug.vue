@@ -49,7 +49,6 @@ export default {
     const slug = params.slug
     const star = await getStar(slug).then((res) => res)
     if (star) {
-      console.log('star', star)
       return { star: star }
     }
   },
