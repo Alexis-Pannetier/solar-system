@@ -34,7 +34,12 @@
       </a-col>
     </a-row>
 
-    <TableContainer v-if="isTable" :data="visibleData" style="margin: 32px 0" />
+    <TableContainer
+      v-if="isTable"
+      :data="visibleData"
+      :favoris="favorisData"
+      style="margin: 32px 0"
+    />
 
     <CardsContainer
       v-if="!isTable"
@@ -60,6 +65,11 @@ export default {
     }
   },
   computed: {
+    favorisData: function () {
+      return this.$store.state.favoris.favorisList.map((item) => {
+        return item.star ? item.star : item
+      })
+    },
     visibleData: function () {
       let result = []
       if (this.data) {

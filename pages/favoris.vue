@@ -20,7 +20,12 @@
       </a-col>
     </a-row>
 
-    <TableContainer v-if="isTable" :data="favorisData" style="margin: 32px 0" />
+    <TableContainer
+      v-if="isTable"
+      :data="favorisData"
+      :favoris="favorisData"
+      style="margin: 32px 0"
+    />
 
     <CardsContainer
       v-if="!isTable"

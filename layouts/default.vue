@@ -2,7 +2,6 @@
   <div>
     <Header />
     <Nuxt id="content" />
-    <Footer />
   </div>
 </template>
 

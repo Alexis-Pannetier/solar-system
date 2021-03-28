@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'Favorisbutton',
+  name: 'FavorisButton',
   data() {
     return {
       hover: false,

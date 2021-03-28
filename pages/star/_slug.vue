@@ -6,6 +6,7 @@
       </a-col>
       <a-col span="18">
         <h1>{{ star.name }}</h1>
+        <FavorisButton :isChecked="isFavoris(star)" :data="star" />
       </a-col>
     </a-row>
     <h3 v-if="star.isPlanet">Planète</h3>
@@ -50,11 +51,24 @@
 
 <script>
 import { getStar } from '../../components/utils/Request'
+import { FavorisButton } from '../../components/FavorisButton'
 
 export default {
   methods: {
     handleBack() {
       return this.$router.push('/')
+    },
+    isFavoris(data) {
+      return (
+        this.favorisData && this.favorisData.some((item) => item.id === data.id)
+      )
+    },
+  },
+  computed: {
+    favorisData: function () {
+      return this.$store.state.favoris.favorisList.map((item) => {
+        return item.star ? item.star : item
+      })
     },
   },
   async asyncData({ params }) {

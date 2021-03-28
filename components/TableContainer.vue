@@ -12,7 +12,7 @@
       </span>
     </template>
     <template slot="favoris" slot-scope="text, record">
-      <FavorisButton :isChecked="false" :data="record" />
+      <FavorisButton :isChecked="isFavoris(record)" :data="record" />
     </template>
   </a-table>
 </template>
@@ -23,12 +23,14 @@ const columns = [
     title: 'Nom',
     dataIndex: 'name',
     key: 'name',
+    sorter: (a, b) => a.name.localeCompare(b.name),
   },
   {
     title: 'Planète',
     dataIndex: 'isPlanet',
     key: 'isPlanet',
     scopedSlots: { customRender: 'isPlanet' },
+    sorter: (a, b) => b.isPlanet - a.isPlanet,
   },
   {
     title: 'Favoris',
@@ -42,7 +44,7 @@ import { FavorisButton } from './FavorisButton'
 
 export default {
   name: 'TableContainer',
-  props: ['data'],
+  props: ['data', 'favoris'],
   data() {
     return {
       columns,
@@ -57,6 +59,9 @@ export default {
           },
         },
       }
+    },
+    isFavoris(data) {
+      return this.favoris && this.favoris.some((item) => item.id === data.id)
     },
   },
 }
