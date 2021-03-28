@@ -1,10 +1,7 @@
 <template>
   <a-icon
-    class="heart"
-    @mouseover="hover = true"
-    @mouseleave="hover = false"
+    class="favoris-button"
     type="heart"
-    :style="('font-size: 16px', hover && 'color:red')"
     :theme="isChecked ? 'filled' : 'outlined'"
     v-on:click="toggleFavoris"
   />
@@ -13,11 +10,6 @@
 <script>
 export default {
   name: 'FavorisButton',
-  data() {
-    return {
-      hover: false,
-    }
-  },
   props: ['data', 'isChecked'],
   methods: {
     toggleFavoris: function (e) {
@@ -28,4 +20,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.favoris-button:hover {
+  color: red;
+}
+</style>

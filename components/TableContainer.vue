@@ -5,6 +5,7 @@
     rowKey="id"
     :rowClassName="(record, index) => 'cursor'"
     :customRow="customRow"
+    :loading="!data"
   >
     <template slot="isPlanet" slot-scope="text, record">
       <span v-if="record.isPlanet">

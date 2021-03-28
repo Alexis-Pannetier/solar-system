@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <a-row type="flex" justify="center" align="middle">
-      <h2>Système solaire</h2>
+      <h2 style="margin: 16px 0">Système solaire</h2>
     </a-row>
 
     <a-row
@@ -98,17 +98,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

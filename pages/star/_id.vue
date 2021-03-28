@@ -5,11 +5,14 @@
         <a-button icon="left" v-on:click="handleBack" />
       </a-col>
       <a-col span="18">
-        <h1>{{ star.name }}</h1>
-        <FavorisButton :isChecked="isFavoris(star)" :data="star" />
+        <h2 style="margin: 16px 0">{{ star.name }}</h2>
       </a-col>
     </a-row>
-    <h3 v-if="star.isPlanet">Planète</h3>
+
+    <h3 v-if="star.isPlanet" style="margin: 16px 0">Planète</h3>
+    <a-row style="margin: 16px 0">
+      <FavorisButton :isChecked="isFavoris(star)" :data="star" />
+    </a-row>
 
     <a-row type="flex" justify="center" align="middle">
       <a-descriptions
@@ -72,13 +75,10 @@ export default {
     },
   },
   async asyncData({ params }) {
-    const slug = params.slug
-    const star = await getStar(slug).then((res) => res)
+    const star = await getStar(params.id).then((res) => res)
     if (star) {
       return { star: star }
     }
   },
 }
 </script>
-
-<style></style>

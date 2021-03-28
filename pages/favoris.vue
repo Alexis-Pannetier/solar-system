@@ -1,7 +1,7 @@
 <template>
   <div class="favoris">
     <a-row type="flex" justify="center" align="middle">
-      <h2 class="title">Favoris</h2>
+      <h2 class="title" style="margin: 16px 0">Favoris</h2>
     </a-row>
 
     <a-row
@@ -61,5 +61,3 @@ export default {
   },
 }
 </script>
-
-<style></style>

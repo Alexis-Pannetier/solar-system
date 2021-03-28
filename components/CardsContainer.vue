@@ -20,5 +20,3 @@ export default {
   props: ['data'],
 }
 </script>
-
-<style></style>
