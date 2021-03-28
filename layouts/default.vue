@@ -1,5 +1,5 @@
 <template>
-  <div id="background">
+  <div>
     <Header />
     <Nuxt id="content" />
     <Footer />
@@ -22,17 +22,8 @@ html {
   box-sizing: border-box;
 }
 
-#background {
-  background-image: url('~/assets/images/galaxy-background.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  display: fixed;
-}
-
 #content {
-  color: white;
+  background-color: #5352ed;
   margin: 0 auto;
   min-height: 100vh;
   text-align: center;
@@ -45,7 +36,6 @@ h4,
 h5,
 h6 {
   font-weight: 300;
-  color: white;
   letter-spacing: 1px;
 }
 
@@ -54,10 +44,6 @@ h6 {
 *::after {
   box-sizing: border-box;
   margin: 0;
-}
-
-.white {
-  color: white !important;
 }
 
 .cursor {

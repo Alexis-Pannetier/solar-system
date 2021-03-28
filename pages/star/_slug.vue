@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { getStar } from '../../store/Request'
+import { getStar } from '../../components/utils/Request'
 
 export default {
   async asyncData({ params }) {
@@ -55,8 +55,4 @@ export default {
 }
 </script>
 
-<style>
-.ant-descriptions-item-content {
-  color: white;
-}
-</style>
+<style></style>

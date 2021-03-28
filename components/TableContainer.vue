@@ -12,7 +12,7 @@
       </span>
     </template>
     <template slot="favoris" slot-scope="text, record">
-      <FavorisButton :isChecked="false" :id="record.id" />
+      <FavorisButton :isChecked="false" :data="record" />
     </template>
   </a-table>
 </template>
@@ -46,7 +46,6 @@ export default {
   data() {
     return {
       columns,
-      favoris: [],
     }
   },
   methods: {
@@ -58,16 +57,6 @@ export default {
           },
         },
       }
-    },
-  },
-  mounted() {
-    if (localStorage.favoris) {
-      this.favoris = localStorage.favoris
-    }
-  },
-  watch: {
-    name(newFavoris) {
-      localStorage.favoris = newFavoris
     },
   },
 }

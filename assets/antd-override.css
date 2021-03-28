@@ -1,13 +1,5 @@
-/* MENU */
-.ant-menu {
-  background-color: inherit;
-}
+/* TODO: remove it */
 
-.ant-menu-item > a {
-  color: white !important;
-}
+/* MENU */
 
 /* TABLE */
-.ant-table-tbody {
-  background-color: white;
-}

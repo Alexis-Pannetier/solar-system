@@ -1,8 +1,8 @@
 <template>
   <div>
-    <a-menu v-model="current" mode="horizontal">
-      <a-menu-item key="star">
-        <NuxtLink to="/star">Système solaire</NuxtLink>
+    <a-menu v-model="current" mode="horizontal" theme="dark">
+      <a-menu-item key="/">
+        <NuxtLink to="/">Système solaire</NuxtLink>
       </a-menu-item>
       <a-menu-item key="favoris">
         <NuxtLink to="/favoris">Favoris</NuxtLink>
@@ -14,7 +14,6 @@
 <script>
 import Logo from './Logo.vue'
 export default {
-  components: { Logo },
   name: 'Header',
   data() {
     return {

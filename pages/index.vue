@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <a-row type="flex" justify="center" align="middle">
-      <h2 class="white">Système solaire</h2>
+      <h2>Système solaire</h2>
     </a-row>
 
     <a-row
@@ -45,9 +45,9 @@
 </template>
 
 <script>
-import { getAllStar } from '../../store/Request'
-import { CardsContainer } from '../../components/CardsContainer'
-import { TableContainer } from '../../components/TableContainer'
+import { getAllStar } from '../components/utils/Request'
+import { CardsContainer } from '../components/CardsContainer'
+import { TableContainer } from '../components/TableContainer'
 
 export default {
   name: 'index',
