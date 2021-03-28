@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h1>{{ star.name }}</h1>
+    <a-row type="flex" align="middle">
+      <a-col span="3">
+        <a-button icon="left" v-on:click="handleBack" />
+      </a-col>
+      <a-col span="18">
+        <h1>{{ star.name }}</h1>
+      </a-col>
+    </a-row>
     <h3 v-if="star.isPlanet">Planète</h3>
 
     <a-row type="flex" justify="center" align="middle">
@@ -45,6 +52,11 @@
 import { getStar } from '../../components/utils/Request'
 
 export default {
+  methods: {
+    handleBack() {
+      return this.$router.push('/')
+    },
+  },
   async asyncData({ params }) {
     const slug = params.slug
     const star = await getStar(slug).then((res) => res)

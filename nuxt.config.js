@@ -14,7 +14,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [{ src: 'ant-design-vue/dist/antd.css' }, { src: '~assets/main.css' }],
+  css: [{ src: '~/assets/ant/main.less' }],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/antd-ui'],
@@ -29,9 +29,18 @@ export default {
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    loaders: {
+      less: {
+        lessOptions: {
+          javascriptEnabled: true,
+          math: 'always',
+        },
+      },
+    },
+  },
   // Test it on local network
   server: {
-    host: "0.0.0.0"
-},
+    host: '0.0.0.0',
+  },
 }

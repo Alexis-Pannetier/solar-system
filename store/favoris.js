@@ -4,15 +4,6 @@ export const state = () => ({
 })
 
 export const mutations = {
-  // add(state, star) {
-  //   state.favorisList.push({
-  //     star,
-  //     done: false,
-  //   })
-  // },
-  // remove(state, { star }) {
-  //   state.favorisList.splice(state.favorisList.indexOf(star), 1)
-  // },
   toggle(state, star) {
     const list = state.favorisList
     let exist = false
