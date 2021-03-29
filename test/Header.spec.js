@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import Header from '../components/Header'
 
 describe('Header', () => {
-  test('testing header', () => {
+  test('testing Header', () => {
     const wrapper = mount(Header, {
       stubs: {
         NuxtLink: true,
