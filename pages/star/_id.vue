@@ -15,39 +15,7 @@
     </a-row>
 
     <a-row type="flex" justify="center" align="middle">
-      <a-descriptions
-        bordered
-        size="small"
-        :column="1"
-        style="max-width: 600px"
-      >
-        <a-descriptions-item v-if="star.aroundPlanet" label="Orbite autour">
-          <a :href="'/star/' + star.aroundPlanet.planet">{{
-            star.aroundPlanet.planet
-          }}</a>
-        </a-descriptions-item>
-        <a-descriptions-item label="Inclinaison">
-          {{ star.inclination }}
-        </a-descriptions-item>
-        <a-descriptions-item label="Masse">
-          {{ star.mass.massValue }}
-        </a-descriptions-item>
-        <a-descriptions-item label="Volume">
-          {{ star.vol.volValue }}
-        </a-descriptions-item>
-        <a-descriptions-item label="Densité">
-          {{ star.density }}
-        </a-descriptions-item>
-        <a-descriptions-item label="Gravité">
-          {{ star.gravity }}
-        </a-descriptions-item>
-        <a-descriptions-item label="Découvert par">
-          {{ star.discoveredBy }}
-        </a-descriptions-item>
-        <a-descriptions-item label="Découvert le">
-          {{ star.discoveryDate }}
-        </a-descriptions-item>
-      </a-descriptions>
+      <StarDescription :data="star" />
     </a-row>
   </div>
 </template>
@@ -55,6 +23,7 @@
 <script>
 import { getStar } from '../../components/utils/Request'
 import { FavorisButton } from '../../components/FavorisButton'
+import { StarDescription } from '../../components/StarDescription'
 
 export default {
   methods: {
@@ -77,6 +46,7 @@ export default {
   async asyncData({ params }) {
     const star = await getStar(params.id).then((res) => res)
     if (star) {
+      console.log('star', star)
       return { star: star }
     }
   },

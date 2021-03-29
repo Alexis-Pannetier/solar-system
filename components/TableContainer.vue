@@ -1,11 +1,13 @@
 <template>
   <a-table
     :columns="columns"
-    :data-source="data"
-    rowKey="id"
-    :rowClassName="(record, index) => 'cursor'"
     :customRow="customRow"
+    :data-source="data"
+    :rowClassName="(record, index) => 'cursor'"
+    rowKey="id"
     :loading="!data"
+    :pagination="{ pageSize: 100 }"
+    :scroll="{ y: 512 }"
   >
     <template slot="isPlanet" slot-scope="text, record">
       <span v-if="record.isPlanet">
