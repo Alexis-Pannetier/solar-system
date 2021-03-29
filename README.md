@@ -2,6 +2,9 @@
 
 Show all star inside solar system with favoris store usage
 
+- [Antd components](https://antdv.com/docs/vue/introduce/)
+- Favoris managed by store
+
 ## 💾 Build Setup
 
 ```bash

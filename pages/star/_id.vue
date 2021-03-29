@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     favorisData: function () {
-      return this.$store.state.favoris.favorisList.map((item) => {
+      return this.$store.state.favoris.data.map((item) => {
         return item.star ? item.star : item
       })
     },
@@ -46,7 +46,6 @@ export default {
   async asyncData({ params }) {
     const star = await getStar(params.id).then((res) => res)
     if (star) {
-      console.log('star', star)
       return { star: star }
     }
   },

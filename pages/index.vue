@@ -38,12 +38,14 @@
       v-if="isTable"
       :data="visibleData"
       :favoris="favorisData"
+      :loading="dataIsLoading"
       style="margin: 32px 0"
     />
 
     <CardsContainer
       v-if="!isTable"
       :data="visibleData"
+      :loading="dataIsLoading"
       style="margin: 32px 0"
     />
   </div>
@@ -58,22 +60,25 @@ export default {
   name: 'index',
   data() {
     return {
-      data: [],
       isPlanet: false,
       isTable: true,
       withMoon: false,
     }
   },
   computed: {
+    dataIsLoading() {
+      this.$store.state.star.loading
+    },
     favorisData: function () {
-      return this.$store.state.favoris.favorisList.map((item) => {
+      return this.$store.state.favoris.data.map((item) => {
         return item.star ? item.star : item
       })
     },
-    visibleData: function () {
+    visibleData() {
       let result = []
-      if (this.data) {
-        result = this.data
+      const data = this.$store.state.star.data
+      result = data
+      if (data) {
         if (this.isPlanet) {
           result = result.filter((item) => item.isPlanet)
         }
@@ -85,11 +90,18 @@ export default {
     },
   },
   mounted() {
-    getAllStar().then((response) => {
-      this.data = response.sort(this.byAlphabetic)
-    })
+    this.loadStars()
   },
   methods: {
+    loadStars() {
+      if (!this.$store.state.star.data.length) {
+        this.$store.commit('star/isLoading')
+        getAllStar().then((response) => {
+          const stars = response.sort(this.byAlphabetic)
+          this.$store.commit('star/set', stars)
+        })
+      }
+    },
     byAlphabetic(a, b) {
       const textA = a.name.toUpperCase()
       const textB = b.name.toUpperCase()

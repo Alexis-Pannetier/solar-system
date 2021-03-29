@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     favorisData: function () {
-      return this.$store.state.favoris.favorisList.map((item) => {
+      return this.$store.state.favoris.data.map((item) => {
         return item.star ? item.star : item
       })
     },

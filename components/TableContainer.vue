@@ -5,7 +5,7 @@
     :data-source="data"
     :rowClassName="(record, index) => 'cursor'"
     rowKey="id"
-    :loading="!data"
+    :loading="loading"
     :pagination="{ pageSize: 100 }"
     :scroll="{ y: 512 }"
   >
@@ -47,7 +47,7 @@ import { FavorisButton } from './FavorisButton'
 
 export default {
   name: 'TableContainer',
-  props: ['data', 'favoris'],
+  props: ['data', 'favoris', 'loading'],
   data() {
     return {
       columns,
